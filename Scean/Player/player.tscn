@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://by6bk50wp52tm"]
 
 [ext_resource type="Texture2D" uid="uid://densn8qurfpqv" path="res://Assets/Players/$ limp.png" id="1_hue6s"]
+[ext_resource type="Script" uid="uid://cs6dcdapsk7jq" path="res://Script/Player/player.gd" id="1_usmpl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usmpl"]
 atlas = ExtResource("1_hue6s")
@@ -112,14 +113,14 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hue6s"]
 
 [node name="Player" type="CharacterBody2D" unique_id=2013440380]
+script = ExtResource("1_usmpl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=807471330]
 position = Vector2(0, -6)
 scale = Vector2(0.58, 0.5)
 sprite_frames = SubResource("SpriteFrames_0u2yr")
-animation = &"walk_up"
-frame = 2
-frame_progress = 0.8257264
+animation = &"Idle"
+frame_progress = 0.1719923
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=25192077]
 shape = SubResource("CapsuleShape2D_hue6s")
