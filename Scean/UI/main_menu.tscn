@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crs5j8v8gr3fu"]
 
 [ext_resource type="Texture2D" uid="uid://dj8s1vdi0ylck" path="res://Assets/Backgrounds/school.png" id="1_eoe04"]
+[ext_resource type="Script" uid="uid://dgarwncxqm3tk" path="res://Script/UI/main_menu.gd" id="1_g5qon"]
 [ext_resource type="FontFile" uid="uid://bb32j0bdeici6" path="res://Fonts/Green Fuz.otf" id="2_ctu3a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ctu3a"]
@@ -41,6 +42,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1164.0
 offset_bottom = 647.0
+script = ExtResource("1_g5qon")
 
 [node name="Panel" type="Panel" parent="." unique_id=643012526]
 layout_mode = 1
@@ -66,7 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1329987380]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1329987380]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -80,7 +82,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pf0w6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ctu3a")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=489494913]
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=489494913]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -94,7 +96,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pf0w6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ctu3a")
 text = "Option"
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=49352159]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=49352159]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -121,6 +123,7 @@ offset_right = 188.0
 offset_bottom = -160.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.9705252, 5.255878e-05, 0.7159708, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 10
@@ -129,3 +132,7 @@ theme_override_font_sizes/font_size = 146
 text = "Play&Gain"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

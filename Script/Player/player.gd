@@ -1,28 +1,31 @@
 extends CharacterBody2D
 
 var speed = 220
+var acceleration = 1200
+var friction = 1000
 
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 
-	var direction = Input.get_vector(
-		"ui_left",
-		"ui_right",
-		"ui_up",
-		"ui_down"
-	)
+	# player input
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
-	velocity = direction * speed
+	# movement
+	var target_velocity = direction * speed
+
+	if direction != Vector2.ZERO:
+		velocity = velocity.move_toward(target_velocity, acceleration * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	move_and_slide()
 
-	# Idle animation
-	if direction == Vector2.ZERO:
+	# animations
 
+	if direction == Vector2.ZERO:
 		animated_sprite.play("Idle")
 
-	# Left / Right
 	elif abs(direction.x) > abs(direction.y):
 
 		if direction.x > 0:
@@ -30,11 +33,9 @@ func _physics_process(delta):
 		else:
 			animated_sprite.play("walk_left")
 
-	# Up / Down
 	else:
 
-		if direction.y > 0:
-			animated_sprite.play("walk_down")
-		else:
+		if direction.y < 0:
 			animated_sprite.play("walk_up")
-			print("running")
+		else:
+			animated_sprite.play("Idle")
