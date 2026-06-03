@@ -4,6 +4,10 @@ var speed = 220
 var acceleration = 1200
 var friction = 1000
 
+var books_collected = 0
+ 
+@onready var books_label = $"../HUD/BooksLabel"
+
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
@@ -39,3 +43,15 @@ func _physics_process(delta):
 			animated_sprite.play("walk_up")
 		else:
 			animated_sprite.play("Idle")
+			
+			
+func collect_book():
+	books_collected += 1
+
+	books_label.text = "Books: " + str(books_collected) + "/3"
+
+	print("Books:", books_collected)
+
+	if books_collected >= 3:
+		print("All books collected!")
+#When player collect books it print "All books collected"

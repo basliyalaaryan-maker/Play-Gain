@@ -126,3 +126,6 @@ animation = &"walk_up"
 shape = SubResource("CapsuleShape2D_hue6s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1417898478]
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true

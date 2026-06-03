@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://wvnvfcg2evcd"]
+
+[ext_resource type="Script" uid="uid://dj11fjserc5bk" path="res://Script/Levels/teacher.gd" id="1_c01i5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u03mq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c01i5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nst"]
+
+[node name="Teacher" type="CharacterBody2D" unique_id=469933811]
+script = ExtResource("1_c01i5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016833156]
+sprite_frames = SubResource("SpriteFrames_u03mq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1619402520]
+shape = SubResource("CapsuleShape2D_c01i5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=283208743]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111899145]
+position = Vector2(120, 25)
+shape = SubResource("RectangleShape2D_p0nst")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

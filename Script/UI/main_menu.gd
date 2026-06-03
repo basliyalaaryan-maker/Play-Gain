@@ -3,7 +3,7 @@ extends Control
 # Play game
 func _on_start_button_pressed():
 	print("start Clicked")
-	get_tree().change_scene_to_file("res://MainGame.tscn")
+	get_tree().change_scene_to_file("res://Scean/Level/game_scene.tscn")
 
 
 # Open options (or placeholder for now)
