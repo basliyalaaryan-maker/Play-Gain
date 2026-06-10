@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxq1tchn6wt11" path="res://Scean/UI/door.tscn" id="4_wg0xa"]
 [ext_resource type="PackedScene" uid="uid://dajfmtjhaxxtn" path="res://Scean/Level/book.tscn" id="5_dtyqm"]
 [ext_resource type="FontFile" uid="uid://bb32j0bdeici6" path="res://Fonts/Green Fuz.otf" id="6_t3hyx"]
+[ext_resource type="PackedScene" uid="uid://wvnvfcg2evcd" path="res://Scean/Level/teacher.tscn" id="7_wg0xa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_275qu"]
 texture = ExtResource("1_wjkbh")
@@ -43514,11 +43515,14 @@ position = Vector2(-802, -244)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1335521726]
 
 [node name="BooksLabel" type="Label" parent="HUD" unique_id=1590674517]
-offset_left = 410.0
-offset_top = 231.0
-offset_right = 654.0
-offset_bottom = 320.0
+offset_left = 872.0
+offset_top = 548.0
+offset_right = 1116.0
+offset_bottom = 637.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_t3hyx")
 theme_override_font_sizes/font_size = 69
 text = "BOOK: 0/3"
+
+[node name="Teacher" parent="." unique_id=469933811 instance=ExtResource("7_wg0xa")]
+position = Vector2(594, -184)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dovpjxye6oi8x"
+path="res://.godot/imported/you should have listened.wav-b21d353e03f6d656c7a1da80e53b5b62.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/you should have listened.wav"
+dest_files=["res://.godot/imported/you should have listened.wav-b21d353e03f6d656c7a1da80e53b5b62.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

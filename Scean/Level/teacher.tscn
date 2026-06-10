@@ -1,26 +1,90 @@
 [gd_scene format=3 uid="uid://wvnvfcg2evcd"]
 
 [ext_resource type="Script" uid="uid://dj11fjserc5bk" path="res://Script/Levels/teacher.gd" id="1_c01i5"]
+[ext_resource type="Texture2D" uid="uid://b7lq87ukndsej" path="res://Assets/Teachers/craftpix-net-242415-free-schoolgirls-anime-character-pixel-sprite-pack/Girl_2/Idle.png" id="2_p0nst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnrki"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tae4"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxoj5"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hnux"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyvx2"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b7fd"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oq3p"]
+atlas = ExtResource("2_p0nst")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u03mq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnrki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tae4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxoj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hnux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyvx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b7fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oq3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c01i5"]
+radius = 34.0
+height = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nst"]
+size = Vector2(87, 43.25)
 
 [node name="Teacher" type="CharacterBody2D" unique_id=469933811]
 script = ExtResource("1_c01i5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2016833156]
+position = Vector2(-1.9999961, -54.3125)
+scale = Vector2(1.7187502, 1.8544923)
 sprite_frames = SubResource("SpriteFrames_u03mq")
+frame = 3
+frame_progress = 0.75482666
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1619402520]
+position = Vector2(-1, 1)
 shape = SubResource("CapsuleShape2D_c01i5")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=283208743]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=111899145]
-position = Vector2(120, 25)
+position = Vector2(-1, 81)
 shape = SubResource("RectangleShape2D_p0nst")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

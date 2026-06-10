@@ -65,6 +65,10 @@ frame_progress = 1.0
 position = Vector2(403, 461)
 shape = SubResource("RectangleShape2D_0phs7")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=69454110]
+position = Vector2(398, 242)
+shape = SubResource("RectangleShape2D_0phs7")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1473459085]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1358306139]
