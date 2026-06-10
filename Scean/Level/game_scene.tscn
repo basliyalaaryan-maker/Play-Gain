@@ -43524,5 +43524,19 @@ theme_override_fonts/font = ExtResource("6_t3hyx")
 theme_override_font_sizes/font_size = 69
 text = "BOOK: 0/3"
 
+[node name="TeacherLabel" type="Label" parent="HUD" unique_id=480752793]
+visible = false
+offset_left = 333.0
+offset_top = 156.0
+offset_right = 968.0
+offset_bottom = 529.4746
+theme_override_colors/font_color = Color(0, 0.99215686, 0, 1)
+theme_override_fonts/font = ExtResource("6_t3hyx")
+theme_override_font_sizes/font_size = 69
+text = "           🎉 Good job 🎉
+      level 1 completed!🏆
+    press e to continue
+              level 2"
+
 [node name="Teacher" parent="." unique_id=469933811 instance=ExtResource("7_wg0xa")]
 position = Vector2(594, -184)
