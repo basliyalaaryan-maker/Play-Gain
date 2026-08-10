@@ -6,7 +6,7 @@ var friction = 1000
 
 var books_collected = 0
  
-@onready var books_label = get_node("../../HUD/BooksLabel")
+@onready var books_label = get_node("../HUD/BooksLabel")
 
 @onready var animated_sprite = $AnimatedSprite2D
 

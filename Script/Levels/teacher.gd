@@ -29,7 +29,7 @@ func _process(_delta):
 
 			# Tell the player to collect all books
 			teacher_label.visible = true
-			teacher_label.text = "Collect all 3 books first!"
+			teacher_label.text = "Collect all 3 books first😡!"
 
 
 # Runs when the player enters the teacher's Area2D
