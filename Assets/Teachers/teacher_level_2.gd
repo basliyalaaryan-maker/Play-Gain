@@ -26,7 +26,7 @@ func _physics_process(delta):
 	var distance = global_position.distance_to(player.global_position)
 
 	# If the teacher is close enough, chase the player
-	if distance < 500:
+	if distance < 600:
 
 		var direction = global_position.direction_to(player.global_position)
 

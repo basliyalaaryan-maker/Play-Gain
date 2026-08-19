@@ -6567,6 +6567,20 @@ theme_override_fonts/font = ExtResource("6_0d84o")
 theme_override_font_sizes/font_size = 69
 text = "TIME: 30"
 
+[node name="TeacherLabel" type="Label" parent="HUD" unique_id=1310899660]
+visible = false
+modulate = Color(0, 0, 0, 1)
+offset_left = 135.0
+offset_top = 206.0
+offset_right = 1107.0
+offset_bottom = 447.0
+theme_override_fonts/font = ExtResource("6_0d84o")
+theme_override_font_sizes/font_size = 58
+text = "Good Job! You completed the game!
+Press E to Play Again
+Press Q to Exit
+"
+
 [node name="Book" parent="." unique_id=264226943 instance=ExtResource("7_22xhf")]
 position = Vector2(-143, -471)
 
@@ -6589,7 +6603,7 @@ position = Vector2(421, -567)
 position = Vector2(96, -542)
 
 [node name="Book8" parent="." unique_id=2048878620 instance=ExtResource("7_22xhf")]
-position = Vector2(839, -424)
+position = Vector2(601, -712)
 
 [node name="Door" parent="." unique_id=1413784034 instance=ExtResource("8_64600")]
 position = Vector2(-216, -905)

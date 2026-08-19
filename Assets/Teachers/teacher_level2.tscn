@@ -160,6 +160,9 @@ animations = [{
 radius = 26.0
 height = 120.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogd0b"]
+radius = 101.04455
+
 [node name="Teacher" type="CharacterBody2D" unique_id=851026946]
 script = ExtResource("1_ogd0b")
 
@@ -172,3 +175,11 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=770635250]
 position = Vector2(33, -52)
 shape = SubResource("CapsuleShape2D_5n4ou")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1702465548]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1792458588]
+position = Vector2(32, -52)
+shape = SubResource("CircleShape2D_ogd0b")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
