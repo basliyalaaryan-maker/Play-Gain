@@ -1,138 +1,90 @@
 [gd_scene format=3 uid="uid://crs5j8v8gr3fu"]
 
-[ext_resource type="Texture2D" uid="uid://dj8s1vdi0ylck" path="res://Assets/Backgrounds/school.png" id="1_eoe04"]
-[ext_resource type="Script" uid="uid://dgarwncxqm3tk" path="res://Script/UI/main_menu.gd" id="1_g5qon"]
-[ext_resource type="FontFile" uid="uid://bb32j0bdeici6" path="res://Fonts/Green Fuz.otf" id="2_ctu3a"]
+[ext_resource type="Script" uid="uid://ck81xr0vo74wu" path="res://Scean/UI/main_menu.gd" id="1_ctu3a"]
+[ext_resource type="Texture2D" uid="uid://cme2nb2yert24" path="res://Scean/UI/ChatGPT Image Aug 18, 2026 at 10_01_58 AM.png" id="1_eoe04"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ctu3a"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5qon"]
 texture = ExtResource("1_eoe04")
-modulate_color = Color(0.34361684, 0.3566003, 0.3371162, 1)
+modulate_color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4jo2"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctu3a"]
+bg_color = Color(0.84104, 0.84104, 0.84103996, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoe04"]
+bg_color = Color(0.84104, 0.84104, 0.84103996, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5qon"]
-bg_color = Color(0.601223, 0.601223, 0.60122293, 1)
+bg_color = Color(0.83889705, 0.83889705, 0.838897, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+shadow_offset = Vector2(0, 3.4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf0w6"]
-bg_color = Color(0.5469681, 0.5469679, 0.54696774, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ctu3a"]
-
-[node name="MainMenu" type="Control" unique_id=1860035585]
+[node name="MainMenu" type="Control" unique_id=1296406169]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1164.0
-offset_bottom = 647.0
-script = ExtResource("1_g5qon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -128.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctu3a")
 
-[node name="Panel" type="Panel" parent="." unique_id=643012526]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1380853823]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ctu3a")
+theme_override_styles/panel = SubResource("StyleBoxTexture_g5qon")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1982995275]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1867648951]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -257.5
-offset_top = -67.5
-offset_right = 257.5
-offset_bottom = 145.5
+offset_left = -204.0
+offset_top = 83.5
+offset_right = 189.0
+offset_bottom = 583.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 59
 
-[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1329987380]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=576703993]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.05, 0.05, 0.05, 1)
 theme_override_font_sizes/font_size = 37
-theme_override_styles/normal = SubResource("StyleBoxFlat_p4jo2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g5qon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pf0w6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ctu3a")
-text = "Start Game"
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctu3a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eoe04")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5qon")
+text = "."
+flat = true
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=489494913]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=392395413]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 37
-theme_override_styles/normal = SubResource("StyleBoxFlat_p4jo2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g5qon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pf0w6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ctu3a")
-text = "Option"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=49352159]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 37
-theme_override_styles/normal = SubResource("StyleBoxFlat_p4jo2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g5qon")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pf0w6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ctu3a")
-text = "Quit"
-
-[node name="Label" type="Label" parent="." unique_id=211579461]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = -281.5
-offset_right = 188.0
-offset_bottom = -160.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.9705252, 5.255878e-05, 0.7159708, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("2_ctu3a")
-theme_override_font_sizes/font_size = 146
-text = "Play&Gain"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_ctu3a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eoe04")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5qon")
+text = "."
+flat = true

@@ -6,44 +6,59 @@ extends CharacterBody2D
 # Checks if the player is close enough to the teacher
 var player_near = false
 
+# Checks if Level 1 has been completed
+var level_complete = false
+
 
 func _process(_delta):
 
-	# If the player is near the teacher and presses E
+	# Player is near teacher and presses E
 	if player_near and Input.is_action_just_pressed("interact"):
 
 		# Get the Player node
 		var player = get_node("../Player")
 
-		# Check if the player has collected all 3 books
+		# If Level 1 is already complete
+		if level_complete:
+
+			# Go to Level 2
+			get_tree().change_scene_to_file(
+				"res://Scean/Level/level2.tscn"
+			)
+
+			return
+
+
+		# Check if player collected all 3 books
 		if player.books_collected >= 3:
+
+			# Level 1 is now complete
+			level_complete = true
 
 			# Show success message
 			teacher_label.visible = true
-			teacher_label.text = "🎉Good Job!🎉\nLevel 1 Complete!🏆\nPress E to continue."
-
-			# Later we can load Level 2 here
-			# get_tree().change_scene_to_file("res://Scean/Level/level2.tscn")
+			teacher_label.text = "🎉 Good Job! 🎉\nLevel 1 Complete! 🏆\nPress E to continue."
 
 		else:
 
-			# Tell the player to collect all books
+			# Player hasn't collected all books
 			teacher_label.visible = true
-			teacher_label.text = "Collect all 3 books first😡!"
+			teacher_label.text = "Collect all 3 books first 😡!"
 
 
-# Runs when the player enters the teacher's Area2D
+# Player enters teacher's interaction area
 func _on_area_2d_body_entered(body):
 
 	if body.name == "Player":
 		player_near = true
 
 
-# Runs when the player leaves the teacher's Area2D
+# Player leaves teacher's interaction area
 func _on_area_2d_body_exited(body):
 
 	if body.name == "Player":
 		player_near = false
 
-		# Hide the message
-		teacher_label.visible = false
+		# Hide message only if Level 1 isn't complete
+		if not level_complete:
+			teacher_label.visible = false
