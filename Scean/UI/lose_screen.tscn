@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bpporepnb117g"]
+
+[ext_resource type="Script" uid="uid://7ngfti50lhq7" path="res://Scean/UI/lose_screen.gd" id="1_hisv2"]
+
+[node name="LoseScreen" type="Control" unique_id=830878976]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hisv2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=558334282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0076459697, 1.4409144e-06, 0.082767464, 1)
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=1683899198]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -214.0
+offset_right = 275.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8718548, 0, 0.17938489, 1)
+theme_override_font_sizes/font_size = 88
+text = "GAME OVER!"
+
+[node name="TryAgainButton" type="Button" parent="." unique_id=305490901]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 327.0
+offset_right = 686.0
+offset_bottom = 399.0
+theme_override_colors/font_color = Color(0, 0.32266676, 0.88, 1)
+theme_override_font_sizes/font_size = 40
+text = "TRY AGAIN"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1080127370]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 439.0
+offset_right = 690.0
+offset_bottom = 509.0
+theme_override_colors/font_color = Color(0, 0.16133317, 0.88, 1)
+theme_override_font_sizes/font_size = 40
+text = "EXIT"

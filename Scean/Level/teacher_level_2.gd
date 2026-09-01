@@ -21,7 +21,15 @@ var total_books = 8
 var game_complete = false
 
 
+# Time between teacher attacks
+var attack_cooldown = 1.0
+
+# Tracks the attack cooldown
+var attack_timer = 0.0
+
+
 func _ready():
+
 	# Find the player in the player group
 	player = get_tree().get_first_node_in_group("player")
 
@@ -29,12 +37,17 @@ func _ready():
 	animated_sprite.play("Idle")
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 
 	# If we can't find the player, try again
 	if player == null:
 		player = get_tree().get_first_node_in_group("player")
 		return
+
+
+	# Count down the attack cooldown
+	if attack_timer > 0:
+		attack_timer -= delta
 
 
 	# Get the number of books collected
@@ -60,6 +73,7 @@ func _physics_process(_delta):
 			# Play Idle animation
 			animated_sprite.play("Idle")
 
+
 			# Only show the completion message once
 			if not game_complete:
 
@@ -72,35 +86,39 @@ func _physics_process(_delta):
 					teacher_label.visible = true
 					teacher_label.text = "Good Job! You completed the game!\nPress E to Play Again\nPress Q to Exit"
 
+
 			# ----------------------------------------
 			# PRESS E TO PLAY AGAIN
 			# ----------------------------------------
 
 			if Input.is_action_just_pressed("interact"):
+
 				get_tree().change_scene_to_file(
 					"res://Scean/Level/game_scene.tscn"
 				)
+
 
 			# ----------------------------------------
 			# PRESS Q TO EXIT
 			# ----------------------------------------
 
 			if Input.is_action_just_pressed("quit_game"):
+
 				get_tree().quit()
+
 
 		else:
 
 			# All books collected, but player hasn't
 			# reached the teacher yet.
 
-			# Teacher follows the player
 			var direction = global_position.direction_to(
 				player.global_position
 			)
 
 			velocity = direction * speed
 
-			# Teacher runs toward the player
+			# Teacher runs toward player
 			animated_sprite.play("Run")
 
 			move_and_slide()
@@ -119,8 +137,21 @@ func _physics_process(_delta):
 		# Stop moving
 		velocity = Vector2.ZERO
 
-		# Attack the player
+		# Play attack animation
 		animated_sprite.play("Attack")
+
+
+		# Damage the player once every second
+		if attack_timer <= 0:
+
+			# Get the Level 2 scene
+			var level = get_tree().current_scene
+
+			# Remove 10 health
+			level.damage_player(10)
+
+			# Reset attack timer
+			attack_timer = attack_cooldown
 
 
 	# If player is nearby
@@ -156,8 +187,7 @@ func _physics_process(_delta):
 
 func _on_interaction_area_body_entered(body):
 
-	# Check if the body is the player
+	# Check if the player is in the player group
 	if body.is_in_group("player"):
 
-		# Save the player reference
 		player = body
