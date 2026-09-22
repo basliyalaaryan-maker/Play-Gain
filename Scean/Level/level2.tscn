@@ -6567,19 +6567,13 @@ theme_override_fonts/font = ExtResource("6_0d84o")
 theme_override_font_sizes/font_size = 69
 text = "TIME: 30"
 
-[node name="TeacherLabel" type="Label" parent="HUD" unique_id=1310899660]
-visible = false
-modulate = Color(0, 0, 0, 1)
-offset_left = 135.0
-offset_top = 206.0
-offset_right = 1107.0
-offset_bottom = 447.0
-theme_override_fonts/font = ExtResource("6_0d84o")
-theme_override_font_sizes/font_size = 58
-text = "Good Job! You completed the game!
-Press E to Play Again
-Press Q to Exit
-"
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1285342344]
+offset_left = 285.0
+offset_top = 11.0
+offset_right = 467.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.32299998, 0.47974998, 0.95, 1)
+value = 100.0
 
 [node name="Book" parent="." unique_id=264226943 instance=ExtResource("7_22xhf")]
 position = Vector2(-143, -471)

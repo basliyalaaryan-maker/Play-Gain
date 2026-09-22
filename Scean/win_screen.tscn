@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bqc3p4c86u8hg"]
+
+[ext_resource type="Texture2D" uid="uid://c8nlii12ma7tb" path="res://Scean/UI/winscreen.png" id="1_adfc2"]
+[ext_resource type="Script" uid="uid://1e6631voeari" path="res://Scean/win_screen.gd" id="1_pq6q1"]
+[ext_resource type="Texture2D" uid="uid://dciwdp74qhvmn" path="res://Scean/UI/88.png" id="2_vuulj"]
+[ext_resource type="Texture2D" uid="uid://ul4r5m1o0yd0" path="res://Scean/UI/99.png" id="3_pq6q1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vuulj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pq6q1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_44wgf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_du3r7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1bx5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhq20"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4f83"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fe8d8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyo4l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1emm6"]
+
+[node name="WinScreen" type="Control" unique_id=1942444363]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq6q1")
+
+[node name="Background" type="TextureRect" parent="." unique_id=177312889]
+self_modulate = Color(0.8026162, 0.80261624, 0.80261606, 1)
+layout_mode = 0
+offset_right = 1536.0
+offset_bottom = 1024.0
+scale = Vector2(0.7488717, 0.62948936)
+texture = ExtResource("1_adfc2")
+
+[node name="PlayAgainButton" type="Button" parent="." unique_id=1072366014]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 454.00003
+offset_right = 2265.0
+offset_bottom = 1288.0
+scale = Vector2(0.088387035, 0.08988449)
+pivot_offset = Vector2(150, 40)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vuulj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pq6q1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_44wgf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_du3r7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k1bx5")
+icon = ExtResource("2_vuulj")
+
+[node name="QuitButton" type="Button" parent="." unique_id=359013980]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 541.0
+offset_right = 2422.0
+offset_bottom = 1312.0
+scale = Vector2(0.08457054, 0.086503565)
+pivot_offset = Vector2(150, 40)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qhq20")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f4f83")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fe8d8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cyo4l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1emm6")
+icon = ExtResource("3_pq6q1")

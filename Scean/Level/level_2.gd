@@ -1,80 +1,95 @@
 extends Node2D
 
-# Connect to the Timer node in Level 2
 @onready var level_timer = $LevelTimer
-
-# Connect to the TimerLabel on the HUD
 @onready var timer_label = $HUD/TimerLabel
+@onready var health_bar = $HUD/HealthBar
 
-# Starting time for the level
+# Starting time
 var time_left = 30
 
-# Player's starting health
+# Starting player health
 var player_health = 100
 
+# Stops the lose screen after winning
+var game_won = false
 
-# Runs when Level 2 starts
+
 func _ready():
 
-	# Set the timer to count every 1 second
+	# Set up the timer
 	level_timer.wait_time = 1.0
-
-	# Make the timer repeat
 	level_timer.one_shot = false
 
-	# Start the timer
-	level_timer.start()
-
-	# Connect the timer to the countdown function
 	level_timer.timeout.connect(_on_level_timer_timeout)
 
-	# Show the starting time
+	level_timer.start()
+
+	# Show starting time
 	timer_label.text = "TIME: " + str(time_left)
 
+	# Show starting health
+	health_bar.value = player_health
 
-# Runs every second
+	# Make sure all books are active at the start of the level
+	for book in get_tree().get_nodes_in_group("books"):
+		book.visible = true
+
+
 func _on_level_timer_timeout():
+
+	# Don't lose if the player has already won
+	if game_won:
+		level_timer.stop()
+		return
 
 	# Take 1 second away
 	time_left -= 1
 
-	# Update the timer on the screen
+	# Update timer
 	timer_label.text = "TIME: " + str(time_left)
 
-	# If the timer reaches 0, the player loses
+	# Time has run out
 	if time_left <= 0:
 
-		# Stop the timer
 		level_timer.stop()
-
-		# Make sure the timer shows 0
 		timer_label.text = "TIME: 0"
 
-		# Show the Lose Screen
+		# Check if player has all 8 books
+		var player = get_tree().get_first_node_in_group("player")
+
+		if player != null and player.books_collected >= 8:
+			return
+
+		# Player loses
 		get_tree().change_scene_to_file(
 			"res://Scean/UI/lose_screen.tscn"
 		)
 
 
-# This function removes health when the teacher attacks
+# ----------------------------------------
+# DAMAGE PLAYER
+# ----------------------------------------
+
 func damage_player(amount):
 
-	# Reduce player health
+	# Reduce health
 	player_health -= amount
 
-	# Make sure health doesn't go below 0
+	# Don't allow health below 0
 	if player_health < 0:
 		player_health = 0
 
+	# Update health bar
+	health_bar.value = player_health
+
+	# Print health in Output for testing
 	print("Player Health: ", player_health)
 
-	# If health reaches 0, the player loses
+	# If health reaches 0, lose
 	if player_health <= 0:
 
-		# Stop the timer
 		level_timer.stop()
 
-		# Open Lose Screen
 		get_tree().change_scene_to_file(
 			"res://Scean/UI/lose_screen.tscn"
 		)

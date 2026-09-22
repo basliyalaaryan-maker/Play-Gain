@@ -42,7 +42,7 @@ func _process(_delta):
 		else:
 
 			# Player hasn't collected all books
-			teacher_label.visible = true
+			teacher_label.visible = true#
 			teacher_label.text = "Collect all 3 books first 😡!"
 
 
