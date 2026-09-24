@@ -4,11 +4,15 @@ extends Node2D
 @onready var timer_label = $HUD/TimerLabel
 @onready var health_bar = $HUD/HealthBar
 
-# Starting time
-var time_left = 30
+# Level settings
+const STARTING_TIME = 30
+const STARTING_HEALTH = 100
+const REQUIRED_BOOKS = 8
+const TIMER_INTERVAL = 1.0
 
-# Starting player health
-var player_health = 100
+# Current level values
+var time_left = STARTING_TIME
+var player_health = STARTING_HEALTH
 
 # Stops the lose screen after winning
 var game_won = false
@@ -17,7 +21,7 @@ var game_won = false
 func _ready():
 
 	# Set up the timer
-	level_timer.wait_time = 1.0
+	level_timer.wait_time = TIMER_INTERVAL
 	level_timer.one_shot = false
 
 	level_timer.timeout.connect(_on_level_timer_timeout)
@@ -54,10 +58,10 @@ func _on_level_timer_timeout():
 		level_timer.stop()
 		timer_label.text = "TIME: 0"
 
-		# Check if player has all 8 books
+		# Check if player has all required books
 		var player = get_tree().get_first_node_in_group("player")
 
-		if player != null and player.books_collected >= 8:
+		if player != null and player.books_collected >= REQUIRED_BOOKS:
 			return
 
 		# Player loses
