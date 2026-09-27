@@ -1,28 +1,80 @@
 extends CharacterBody2D
 
-# Player movement settings
+# ================================================
+# PLAYER MOVEMENT SETTINGS
+# ================================================
+
 var speed = 220
 var acceleration = 1200
 var friction = 1000
 
-# Stores how many books the player has collected
+
+# ================================================
+# BOOK SYSTEM
+# ================================================
+
+# Number of books collected
 var books_collected = 0
 
-# The total number of books required in the current level
 # Level 1 = 3 books
 # Level 2 = 8 books
 @export var total_books = 3
 
-# Gets the book counter from the HUD
-@onready var books_label = get_node("../HUD/BooksLabel")
 
-# Gets the player's animated sprite
+# ================================================
+# HEALTH SYSTEM
+# ================================================
+
+# Maximum health
+var max_health = 100
+
+# Current health
+var health = 100
+
+
+# ================================================
+# NODE REFERENCES
+# ================================================
+
+# Books label
+@onready var books_label = get_node_or_null("../HUD/BooksLabel")
+
+# Health bar
+# get_node_or_null prevents an error if a level has no HealthBar
+@onready var health_bar = get_node_or_null("../HUD/HealthBar")
+
+# Player animation
 @onready var animated_sprite = $AnimatedSprite2D
 
 
+# ================================================
+# READY
+# ================================================
+
+func _ready():
+
+	# Set up HealthBar if this level has one
+	if health_bar != null:
+		health_bar.max_value = max_health
+		health_bar.value = health
+
+	# Set up BooksLabel if this level has one
+	if books_label != null:
+		books_label.text = (
+			"Books: "
+			+ str(books_collected)
+			+ "/"
+			+ str(total_books)
+		)
+
+
+# ================================================
+# PLAYER MOVEMENT
+# ================================================
+
 func _physics_process(delta):
 
-	# Get the direction the player is moving
+	# Get movement direction
 	var direction = Input.get_vector(
 		"ui_left",
 		"ui_right",
@@ -30,66 +82,118 @@ func _physics_process(delta):
 		"ui_down"
 	)
 
-	# Calculate the player's target movement speed
+	# Calculate target velocity
 	var target_velocity = direction * speed
 
-	# Move the player towards the target speed
+	# Accelerate while moving
 	if direction != Vector2.ZERO:
+
 		velocity = velocity.move_toward(
 			target_velocity,
 			acceleration * delta
 		)
+
 	else:
-		# Slow the player down when no movement key is pressed
+
+		# Slow down when player stops moving
 		velocity = velocity.move_toward(
 			Vector2.ZERO,
 			friction * delta
 		)
 
-	# Move the CharacterBody2D
+	# Move player
 	move_and_slide()
 
 
-	# -------------------------
+	# ================================================
 	# PLAYER ANIMATIONS
-	# -------------------------
+	# ================================================
 
-	# Play idle animation when the player is not moving
+	# Player standing still
 	if direction == Vector2.ZERO:
+
 		animated_sprite.play("Idle")
 
-	# Check whether the player is moving more horizontally
+
+	# Player moving horizontally
 	elif abs(direction.x) > abs(direction.y):
 
-		# Play the correct walking animation
 		if direction.x > 0:
+
 			animated_sprite.play("walk_right")
+
 		else:
+
 			animated_sprite.play("walk_left")
 
-	# Player is moving vertically
+
+	# Player moving vertically
 	else:
 
-		# Play walking-up animation
 		if direction.y < 0:
+
 			animated_sprite.play("walk_up")
+
 		else:
-			# Use idle animation when walking down
+
 			animated_sprite.play("Idle")
 
 
+# ================================================
+# BOOK COLLECTION
+# ================================================
+
 func collect_book():
 
-	# Increase the number of collected books by 1
+	# Add one book
 	books_collected += 1
 
-	# Update the HUD using the total number of books
-	# required for the current level
-	books_label.text = "Books: " + str(books_collected) + "/" + str(total_books)
+	# Update BooksLabel
+	if books_label != null:
 
-	# Print the number of books collected in the debugger
-	print("Books:", books_collected)
+		books_label.text = (
+			"Books: "
+			+ str(books_collected)
+			+ "/"
+			+ str(total_books)
+		)
 
-	# Check whether the player has collected all required books
+	print("Books: ", books_collected)
+
+	# Check if all required books are collected
 	if books_collected >= total_books:
+
 		print("All books collected!")
+
+
+# ================================================
+# PLAYER TAKES DAMAGE
+# ================================================
+
+func take_damage(amount):
+
+	# Reduce player health
+	health -= amount
+
+	# Don't allow health below 0
+	health = max(health, 0)
+
+	# Update HealthBar
+	if health_bar != null:
+		health_bar.value = health
+
+	# Show health in debugger
+	print("Player Health: ", health)
+
+	# ================================================
+	# PLAYER DIED
+	# ================================================
+
+	if health <= 0:
+
+		print("Player defeated!")
+
+		# Go to Lose Screen
+		get_tree().change_scene_to_file(
+			"res://Scean/lose_screen.tscn"
+		)
